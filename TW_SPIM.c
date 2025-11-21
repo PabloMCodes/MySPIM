@@ -50,7 +50,8 @@ void ALU(unsigned A,unsigned B,char ALUControl,unsigned *ALUresult,char *Zero)
 
 int instruction_fetch(unsigned PC,unsigned *Mem,unsigned *instruction)
 {
-    if (PC & 3 != 0) return 1;
+    // needed parentheses to get rid of error with != being 
+    if ((PC & 3) != 0) return 1;
 
     *instruction = Mem[PC>>2];
 
@@ -104,6 +105,8 @@ int ALU_operations(unsigned data1,unsigned data2,unsigned extended_value,unsigne
         {
             case 0: command = 0; break; //addi, lw, sw
             case 1: command = 1; break; // beq, bne
+            case 2: command = 2; break; // slti
+            case 3: command = 3; break; // sltiu
             case 6: command = 6; break; // lui
             default: return 1; // invalid I-type instruction
         }
