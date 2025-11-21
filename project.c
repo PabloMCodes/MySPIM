@@ -1,10 +1,4 @@
 #include "spimcore.h"
-/* Functions not yet completed: 
- - instruction_partition
- - instruction_decode
- - rw_memory
- - write_register
-*/
 
 void ALU(unsigned A,unsigned B,char ALUControl,unsigned *ALUresult,char *Zero)
 {
